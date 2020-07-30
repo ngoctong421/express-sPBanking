@@ -90,7 +90,7 @@ exports.eWalletTopup = async (req, res) => {
 
     if (bankAccount) {
       if (req.body.amount < bankAccount.balance) {
-        bankAccount.balance -= req.body.amount;
+        bankAccount.balance -= parseInt(req.body.amount);
 
         bankAccount.save();
 
@@ -103,6 +103,34 @@ exports.eWalletTopup = async (req, res) => {
             'There is not enough money in your account to make this transaction.',
         });
       }
+    } else {
+      res.status(500).json({
+        error: err,
+      });
+    }
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+};
+
+exports.eWalletWithdraw = async (req, res) => {
+  try {
+    const bankAccount = await BankAccount.findOne({
+      cardnumbersliced: req.body.cardnumbersliced,
+      bank: req.body.bank,
+      name: req.body.name,
+    });
+
+    if (bankAccount) {
+      bankAccount.balance += parseInt(req.body.amount);
+
+      bankAccount.save();
+
+      res.status(200).json({
+        message: 'OK',
+      });
     } else {
       res.status(500).json({
         error: err,

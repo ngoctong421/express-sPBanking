@@ -11,6 +11,8 @@ router.post('/checkbankaccount', BankController.checkBankAccount);
 
 router.post('/topup', BankController.eWalletTopup);
 
+router.post('/withdraw', BankController.eWalletWithdraw);
+
 router.get('/getbankaccount/:cardnumber', BankController.getBankAccount);
 
 module.exports = router;
