@@ -36,7 +36,7 @@ const bankRoutes = require('./routes/bank');
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(
-  'mongodb+srv://ngoctong124:ngoctong124@cluster0-ghvql.gcp.mongodb.net/test?retryWrites=true&w=majority',
+  'mongodb+srv://ngoctong124:ngoctong124@sp-bank.ghvql.mongodb.net/test?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
