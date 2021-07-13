@@ -23,29 +23,23 @@ const bankRoutes = require('./routes/bank');
 //      }
 // );
 
-//Atlas VoTan
-// mongoose.connect(
-//     'mongodb+srv://admin:' +
-//     process.env.MONGO_ATLAS_PW +
-//     '@restapi-mfg8v.mongodb.net/test?retryWrites=true&w=majority',
-//     {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//     }
-// );
 
+//Atlas VoTan
 mongoose.set('useCreateIndex', true);
-mongoose.connect(
-  'mongodb+srv://ngoctong124:ngoctong124@sp-bank.ghvql.mongodb.net/test?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) throw err;
-    console.log('Connect MongoDB Successfully!');
-  }
-);
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.mfg8v.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
+    // `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.lrekd.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
+    // 'mongodb+srv://sparking:sparking@cluster0.lrekd.mongodb.net/test?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    }
+    )
+    .then(() => {
+      console.log('Database connected!');
+    });
 
 //Local
 // mongoose.set('useCreateIndex', true);

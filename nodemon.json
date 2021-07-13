@@ -1,0 +1,8 @@
+{
+    "env": {
+        "PORT": 8000,
+        "MONGO_DB_USER": "admin",
+        "MONGO_DB_PASSWORD": "tan040499",
+        "MONGO_DB_DATABASE": "banking"    
+    }
+}

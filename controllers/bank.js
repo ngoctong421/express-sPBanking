@@ -52,9 +52,9 @@ exports.checkBankAccount = async (req, res) => {
           message: 'Your card was added before!',
         });
       } else {
-        // bankAccount.connected = 1;
+        bankAccount.connected = 1;
 
-        // bankAccount.save();
+        bankAccount.save();
 
         if (bankAccount.bank == 'VCB') {
           res.status(201).json({
