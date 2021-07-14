@@ -84,21 +84,5 @@ app.use((req, res, next) => {
 // app.use('/tickets', ticketRoutes);
 app.use('/bank', bankRoutes);
 
-//Catch 404 errors and forward then to error handler
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  error.status(404);
-  next(error);
-});
-
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message,
-    },
-  });
-});
-
 //Module exports
 module.exports = app;
