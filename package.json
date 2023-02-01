@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "mongoose": "^5.9.20",
+    "mongoose": "^5.13.15",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.0"
   },
